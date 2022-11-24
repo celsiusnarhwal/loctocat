@@ -47,10 +47,10 @@ Whoa. That was easy.
 
 `Authenticator.authenticate()` will, in order:
 
-- Obtain device and user codes from the authorization server
-- Prompt the user to visit the verficiation URL and enter the user code
-- Poll the authorization server for an access token
-- Return the access token as a string
+1. Obtain device and user codes from the authorization server
+2. Prompt the user to visit the verficiation URL and enter the user code
+3. Poll the authorization server for an access token
+4. Return the access token as a string
 
 Here's an example of using `Authenticator` to authenticate with GitHub:
 
@@ -124,8 +124,7 @@ containing the user code and verification URI:
 ```python
 auth_info = authenticator.ping()
 
-print(
-    f"Check it out, yo! This is some epic text telling YOU to go {auth_info.verification_uri} and enter {auth_info.user_code}! Swag!")
+print(f"Check it out, yo! This is some epic text telling YOU to go {auth_info.verification_uri} and enter {auth_info.user_code}! Swag!")
 ```
 
 ### `Authenticator.poll()`
