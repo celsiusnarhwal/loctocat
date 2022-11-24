@@ -80,18 +80,15 @@ class Authenticator:
         The URL which your app with poll for an authorization token.
     scopes: list[str], optional
         A list of scopes your app will request access to. Defaults to None.
-    client_secret: str, optional
-        Your app's client secret. Defaults to None. Only provide this if the authorization server requires it.
     poll_interval: int, optional
         The number of seconds your app will wait between polling requests. Defaults to 5.
     extras: keyword arguments, optional
         Any additional parameters required by the authorization server.
     """
 
-    def __init__(self, client_id: str, auth_url: str, token_url: str, scopes: list[str] = None,
-                 client_secret: str = None, poll_interval: int = 5, **extras):
+    def __init__(self, client_id: str, auth_url: str, token_url: str, scopes: list[str] = None, poll_interval: int = 5,
+                 **extras):
         self.client_id = client_id
-        self.client_secret = client_secret
         self.auth_url = auth_url
         self.token_url = token_url
         self.scopes = scopes
@@ -100,7 +97,7 @@ class Authenticator:
         self.auth_info: LoctocatAuthInfo = None
 
         self._handlers = []
-        self._dc = DeviceClient(client_id=self.client_id, client_secret=client_secret, scopes=self.scopes, **extras)
+        self._dc = DeviceClient(client_id=self.client_id, scopes=self.scopes, **extras)
 
         for handler in self._get_default_handlers():
             self.attach_handler(handler)
