@@ -18,7 +18,6 @@ class GitHubAuthenticator(Authenticator):
     scopes : list[str], optional
         The scopes to request.
     """
-    __slots__ = ["client_id", "scope"]
 
     def __init__(self, client_id: str, scopes: list[str] = None):
         self.client_id = client_id
