@@ -1,9 +1,9 @@
 # loctocat
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/loctocat?logo=python&style=for-the-badge)
-![PyPI](https://img.shields.io/pypi/v/loctocat?logo=pypi&style=for-the-badge)
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/celsiusnarhwal/loctocat?color=orange&include_prereleases&logo=github&style=for-the-badge)
-![PyPI - License](https://img.shields.io/pypi/l/loctocat?color=03cb98&style=for-the-badge)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/loctocat?logo=pypi&logoColor=white&style=for-the-badge)
+[![PyPI](https://img.shields.io/pypi/v/loctocat?color=green&logo=pypi&style=for-the-badge&logoColor=white)](https://pypi.org/project/loctocat)
+[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/celsiusnarhwal/loctocat?color=orange&include_prereleases&logo=github&style=for-the-badge)](https://github.com/celsiusnarhwal/loctocat/releases/latest)
+[![PyPI - License](https://img.shields.io/pypi/l/loctocat?color=03cb98&style=for-the-badge)](https://github.com/celsiusnarhwal/loctocat/blob/HEAD/LICENSE.md)
 
 locatocat brings simple yet flexible OAuth 2.0 device flow authentication to Python. It has built-in asyncio support
 and even predefined authenticators for popular services. Plus, it's fully compliant with
