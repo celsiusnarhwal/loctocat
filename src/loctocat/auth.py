@@ -30,11 +30,15 @@ class Handler:
     action: Callable[[Authenticator], None]
         The function to be called when the error code is returned. The function
         must take an class:`Authenticator` object as its only parameter.
+    continue_on_error: bool, optional
+        Whether to continue the authentication process after the handler is
+        called. Defaults to True.
     """
 
-    def __init__(self, error: str, action: Callable[[Authenticator], None]):
+    def __init__(self, error: str, action: Callable[[Authenticator], None], continue_on_error: bool = True):
         self.error = error
         self.action = action
+        self.continue_on_error = continue_on_error
 
 
 class LoctocatAuthInfo:
@@ -197,8 +201,12 @@ class Authenticator:
                 handler: Handler = next((h for h in self._handlers if h.error == response["error"]), None)
                 if handler:
                     handler.action(self)
+                    if handler.continue_on_error:
+                        continue
+                    else:
+                        break
                 else:
-                    raise ServerError(f"The server returned the following error: {response['error']}")
+                    raise ServerError(response['error'])
             else:
                 return response["access_token"]
 
