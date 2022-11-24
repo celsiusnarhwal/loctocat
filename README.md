@@ -189,4 +189,4 @@ In an age where developers must take great caution not to tread on the intellect
 hoping that a such an incredible library is made available under a permissive license. Fortunately,
 loctocat has you covered.
 
-loctocat is licensed under the [MIT License](https://github.com/celsiusnarhwal/loctocat/blob/master/LICENSE.md).
+loctocat is licensed under the [MIT License](https://github.com/celsiusnarhwal/loctocat/blob/HEAD/LICENSE.md).
