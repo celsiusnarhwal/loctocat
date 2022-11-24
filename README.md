@@ -134,6 +134,8 @@ need to pass the `LoctocatAuthInfo` object returned by `Authenticator.ping()` to
 authorization info is automatically remembered by `Authenticator`. All you have to do is call the method:
 
 ```python
+# Authenticator.ping() must have been called on the Authenticator object already or this will not work.
+
 token = authenticator.poll()
 ```
 
