@@ -1,8 +1,13 @@
 [tool.poetry]
 name = "loctocat"
-version = "0.1.0"
-description = ""
-authors = ["celsius narhwal <celsius@celsiusnarhwal.dev>"]
+version = "1.0.0"
+description = "Simple yet flexible OAuth 2.0 device flow authentication for Python"
+authors = ["celsius narhwal <hello@celsiusnarhwal.dev>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/celsiusnarhwal/loctocat"
+include = ["README.md", "LICENSE.md"]
+keywords = ["oauth", "oauth2", "authentication", "device-flow", "asyncio"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
