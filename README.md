@@ -161,8 +161,7 @@ Or you could wait until I finish the documentation site. I'm not your mother.
 
 ## FAQ
 
-Maybe you have questions about loctocat that haven't been answered by the rest of this README. Maybe you have an
-insatible urge to know "just how frequently asked are those questions?". Maybe you just want to see me talk to
+Maybe you have questions about loctocat that haven't been answered by the rest of this README. Maybe you just want to see me talk to
 myself for like, two paragraphs. Fortunately, loctocat has you covered.
 
 ### Q: loctowhat now
