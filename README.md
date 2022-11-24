@@ -5,7 +5,7 @@
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/celsiusnarhwal/loctocat?color=orange&include_prereleases&label=latest%20release&logo=github&style=for-the-badge)
 [![PyPI - License](https://img.shields.io/pypi/l/loctocat?color=03cb98&style=for-the-badge)](https://github.com/celsiusnarhwal/loctocat/blob/HEAD/LICENSE.md)
 
-locatocat brings simple yet flexible OAuth 2.0 device flow authentication to Python. It has built-in asyncio support
+loctocat brings simple yet flexible OAuth 2.0 device flow authentication to Python. It has built-in asyncio support
 and even predefined authenticators for popular services. Plus, it's fully compliant with
 [RFC 8628](https://tools.ietf.org/html/rfc8628), making it compatible with any OAuth2-supporting service that
 (correctly) implements the standard.
