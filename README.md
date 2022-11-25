@@ -187,13 +187,12 @@ def authenticate_with_github(client_id: str, scopes: list[str]) -> str:
     token_url = "https://github.com/login/oauth/access_token"
     client = DeviceClient(client_id=client_id, scope=scopes)
     
-    uri = client.prepare_request_uri(auth_url)
-    response = requests.post(uri, headers={"Accept": "application/json"}).json()
+    ping_uri = client.prepare_request_uri(auth_url)
+    response = requests.post(ping_uri, headers={"Accept": "application/json"}).json()
     
-    uri = client.prepare_request_uri(token_url, code=response["device_code"])
-    
+    poll_uri = client.prepare_request_uri(token_url, code=response["device_code"])
     while True:
-        response = requests.post(uri, headers={"Accept": "application/json"}).json()
+        response = requests.post(poll_uri, headers={"Accept": "application/json"}).json()
         
         if "error" in response:
             if response["error"] in ["authorization_pending", "slow_down"]:
