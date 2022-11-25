@@ -101,7 +101,7 @@ class Authenticator:
         self.auth_info: LoctocatAuthInfo = None
 
         self._handlers = []
-        self._dc = DeviceClient(client_id=self.client_id, scopes=self.scopes, **extras)
+        self._dc = DeviceClient(client_id=self.client_id, scope=self.scopes, **extras)
 
         for handler in self._get_default_handlers():
             self.attach_handler(handler)
