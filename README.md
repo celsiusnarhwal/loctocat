@@ -196,10 +196,7 @@ def authenticate_with_github(client_id: str, scopes: list[str]) -> str:
         response = requests.post(uri, headers={"Accept": "application/json"}).json()
         
         if "error" in response:
-            if response["error"] == "authorization_pending":
-                time.sleep(response["interval"])
-                continue
-            elif response["error"] == "slow_down":
+            if response["error"] in ["authorization_pending", "slow_down"]:
                 time.sleep(response["interval"])
                 continue
             else:
