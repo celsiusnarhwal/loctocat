@@ -232,8 +232,8 @@ def authenticate_with_github(client_id: str, scopes: list[str]) -> str:
 
 Whoa. That was easy.
 
-Part of the reason I made loctocat is that no other library capable of doing what loctocat does did it in a way that
-didn't SUCK. The first example SUCKS. The second example is AWESOME. Case closed.
+Part of the reason I made loctocat is that no other library capable of doing what loctocat does does it in a way that
+doesn't SUCK. The first example SUCKS. The second example is AWESOME. Case closed.
 
 
 ### Q: loctocat isn't working with [INSERT SERVICE HERE] and I'm FRUSTRATED AAAAGGGGGGHHHHH
