@@ -171,9 +171,74 @@ myself for like, two paragraphs. Fortunately, loctocat has you covered.
 A: Lock + [Octocat](https://octodex.github.com). loctocat was born out of my need for a Python library that implemented
 OAuth 2.0 device flow authentication for GitHub.
 
-### Q: I can just do this with requests-oauthlib or [INSERT OAUTH LIBRARY HERE] and those are like wayyyy more popular and tested so ummmm owned much?
+### Q: pretty sure I can do this with requests-oauthlib or [INSERT OAUTH LIBRARY HERE] just fine dude
 
-A: Ratio.
+A: Sure you can. In fact, loctocat uses requests and oauthlib under the hood. So let's leave loctocat behind and
+write a function to authenticate with GitHub using requests and oauthlib, together!
+
+```python
+import time
+
+import requests
+from oauthlib.oauth2 import DeviceClient
+
+def authenticate_with_github(client_id: str, scopes: list[str]) -> str:
+    auth_url = "https://github.com/login/device/code"
+    token_url = "https://github.com/login/oauth/access_token"
+    client = DeviceClient(client_id=client_id, scope=scopes)
+    
+    uri = client.prepare_request_uri(auth_url)
+    response = requests.post(uri, headers={"Accept": "application/json"}).json()
+    
+    uri = client.prepare_request_uri(token_url, code=response["device_code"])
+    
+    while True:
+        response = requests.post(uri, headers={"Accept": "application/json"}).json()
+        
+        if "error" in response:
+            if response["error"] == "authorization_pending":
+                time.sleep(response["interval"])
+                continue
+            elif response["error"] == "slow_down":
+                time.sleep(response["interval"])
+                continue
+            else:
+                raise RuntimeError(response["error"])
+        else:
+            return response["access_token"]
+```
+
+Damn, that plate can boil!
+
+Now let's do the same thing, but with loctocat.
+
+```python
+from loctocat.predefined import GitHubAuthenticator
+
+def authenticate_with_github(client_id: str, scopes: list[str]) -> str:
+    authenticator = GitHubAuthenticator(client_id=client_id, scopes=scopes)
+    return authenticator.authenticate()
+
+# "Hey, that's cheating!" Fine, let's do it the hard way.
+
+from loctocat import Authenticator
+
+def authenticate_with_github(client_id: str, scopes: list[str]) -> str:
+    authenticator = Authenticator(
+        client_id=client_id,
+        auth_url="https://github.com/login/device/code",
+        token_url="https://github.com/login/oauth/access_token",
+        scopes=scopes
+    )
+    
+    return authenticator.authenticate()
+```
+
+Whoa. That was easy.
+
+Part of the reason I made loctocat is that no other library capable of doing what loctocat does did it in a way that
+didn't SUCK. The first example SUCKS. The second example is AWESOME. Case closed.
+
 
 ### Q: loctocat isn't working with [INSERT SERVICE HERE] and I'm FRUSTRATED AAAAGGGGGGHHHHH
 
